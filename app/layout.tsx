@@ -11,9 +11,7 @@ export default function RootLayout({
         <title>Playground</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
-        <main>{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

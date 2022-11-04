@@ -7,8 +7,6 @@ body {
   line-height: 1.4;
   padding: 0;
   margin: 0;
-
-  display: flex;
 }
 
 nav ul {
@@ -18,17 +16,49 @@ nav ul {
 }
 main {
   width: 100%;
+  display: flex;
 }
-h1, h2, h3, h4, h5, h6{
+section {
+  padding: 16px;
+  width: 50%;
+  flex: 50%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
 /* theme */
-body {background: white; color: black;}
-a {color: black;}
-
-@media (prefers-color-scheme: dark) {
-  body {background: #111; color: white;}
-  a {color: white;}
+body {
+  background: white;
+  color: black;
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+a {
+  color: black;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: white;
+  }
+  a {
+    color: white;
+  }
+}
+
+/* mobile */
+@media (max-width: 700px) {
+  section {
+    width: 100%;
+    flex: 100%;
+  }
+}

@@ -1,11 +1,18 @@
-import styles from "./main.module.css";
+import { Suspense } from "react";
+import Letterboxd, { LetterboxdSkeleton } from "./Letterboxd";
 
 export default function Page() {
   return (
     <>
-      <section className={styles.section}>
-        <h1>Welcome to Playground</h1>
-      </section>
+      <main>
+        <section>
+          <h1>Welcome to Playground</h1>
+        </section>
+        <Suspense fallback={<LetterboxdSkeleton />}>
+          {/* @ts-expect-error Server Component */}
+          <Letterboxd />
+        </Suspense>
+      </main>
     </>
   );
 }
