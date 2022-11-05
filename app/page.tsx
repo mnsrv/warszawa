@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import Letterboxd, { LetterboxdSkeleton } from "./Letterboxd";
 
+export const revalidate = 60; // revalidate this page every 60 seconds
+
 export default function Page() {
   return (
     <>
