@@ -17,6 +17,7 @@ nav ul {
 main {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 section {
   padding: 16px;
@@ -37,17 +38,13 @@ body {
   background: white;
   color: black;
 }
-main {
-  display: flex;
-  flex-wrap: wrap;
-}
 a {
   color: black;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #111;
+    background: #1c1c1c;
     color: white;
   }
   a {
