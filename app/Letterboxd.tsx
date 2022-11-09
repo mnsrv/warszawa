@@ -1,4 +1,5 @@
 import Parser from "rss-parser";
+import Image from "next/image";
 
 import styles from "./Letterboxd.module.css";
 
@@ -34,39 +35,28 @@ const parser: Parser<CustomFeed, CustomItem> = new Parser({
 
 async function getData() {
   const res = await parser.parseURL("https://letterboxd.com/mansurov/rss/");
-  return res.items.slice(0, 3);
+  const movies = res.items.slice(0, 4).map((m) => {
+    const image = m.content.split(`"`)[1] || "";
+    return {
+      ...m,
+      image,
+    };
+  });
+  return movies;
 }
 
 export default async function Letterboxd() {
   const movies = await getData();
+  console.log("movies", movies);
 
   return (
     <section>
       <h2>Movies</h2>
       <div className={styles.list}>
         {movies.map((m) => (
-          <div
-            key={m.guid}
-            dangerouslySetInnerHTML={{ __html: m.content }}
-            className={styles.letterboxd}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export function LetterboxdSkeleton() {
-  return (
-    <section>
-      <h2>Movies</h2>
-      <div className={styles.list}>
-        {[0, 1, 2].map((m) => (
-          <div key={m} className={styles.letterboxd}>
-            <p>
-              <span className={styles.poster} />
-            </p>
-            <p>loading...</p>
+          <div key={m.guid} className={styles.poster}>
+            <Image src={m.image} alt={m["letterboxd:filmTitle"]} fill />
+            <div className={styles.frame} />
           </div>
         ))}
       </div>
